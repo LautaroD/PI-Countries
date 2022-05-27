@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Country } = require('../db.js');
+const { Country, TouristActivity } = require('../db.js');
 const { Op } = require('sequelize');
 
 async function getAllCountries(req, res, next) {
@@ -34,11 +34,19 @@ async function getAllCountries(req, res, next) {
 async function getPaisName(req, res, next) {
     let { name } = req.query;
     try {
-        if (name.length < 2) next()
-        let pais = await Country.findAll({ where: { name: { [Op.iLike]: `%${name}%` } } });
+        if (name.length <= 0) next()
+        let pais = await Country.findAll({
+            where: { name: { [Op.iLike]: `%${name}%` } },
+            include: [{
+                model: TouristActivity,
+                through: { attributes: [] }
+            }]
+        });
         if (!pais) {
             res.status(400).send('Pais no encontrado')
-        } else res.send(pais)
+        } else {
+            res.send(pais)
+        }
     } catch (error) {
         next()
     }

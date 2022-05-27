@@ -6,24 +6,24 @@ import Home from './components/home/Home';
 
 function App() {
   return (
-    <>
+    <div className='App'>
       <Route path='/'>
-        <div className="App">
+        <div >
           <Nav />
         </div>
       </Route>
       <Route exact path='/home'>
-        <div className="App"><h1>Henry Countries</h1></div>
+        <div ><h1>Henry Countries</h1></div>
         <Home />
       </Route>
       <Route path='/countries'>
-        <div className="App"><h1>Countries</h1></div>
+        <div ><h1>Countries</h1></div>
       </Route>
       <Route path='/activity'>
-        <div className="App"><h1>Actividades turisticas</h1></div>
+        <div ><h1>Actividades turisticas</h1></div>
         <CreateActivity />
       </Route>
-    </>
+    </div>
   );
 }
 

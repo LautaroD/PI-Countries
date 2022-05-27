@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import CardPais from './CardPais';
 import { getAllCountries, resetCountries } from '../../redux/actions';
+import style from './assets/Home.module.css'
 
 // const ITEMS_PER_PAGE = 10;
 
@@ -17,7 +18,7 @@ export const Home = ({ getAllCountries, resetCountries }) => {
     }, [])
 
     return (
-        <div>
+        <div className={style.cotainer}>
             <div>
                 {paises.map(e => <CardPais
                     key={e.id}
