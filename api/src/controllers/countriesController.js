@@ -35,7 +35,7 @@ async function getPaisName(req, res, next) {
     let { name } = req.query;
     try {
         if (name.length < 2) next()
-        let pais = await Country.findOne({ where: { name: { [Op.iLike]: `%${name}%` } } });
+        let pais = await Country.findAll({ where: { name: { [Op.iLike]: `%${name}%` } } });
         if (!pais) {
             res.status(400).send('Pais no encontrado')
         } else res.send(pais)
