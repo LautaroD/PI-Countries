@@ -1,7 +1,8 @@
-import { GET_ALL_COUNTRIES, RESET_COUNTRIES, GET_COUNTRIES_BY_NAME } from "../actions"
+import { GET_ALL_COUNTRIES, RESET_COUNTRIES, SEARCH_BY_NAME, SEARCH_BACK } from "../actions"
 
 const initialState = {
     countries: [],
+    countriesCopy: []
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -9,12 +10,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case GET_ALL_COUNTRIES:
             return {
                 ...state,
-                countries: state.countries.concat(payload)
+                countries: payload,
+                countriesCopy: payload
             }
-        case GET_COUNTRIES_BY_NAME:
+        case SEARCH_BY_NAME:
             return {
                 ...state,
-                countries: payload
+                countries: state.countries.filter(pais => pais.name.toLowerCase().includes(payload.toLowerCase()))
+            }
+        case SEARCH_BACK:
+            return {
+                ...state,
+                countries: state.countriesCopy.filter(pais => pais.name.toLowerCase().includes(payload.toLowerCase()))
             }
         case RESET_COUNTRIES:
             return {

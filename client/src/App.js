@@ -1,4 +1,4 @@
-import './App.css';
+import style from './App.module.css';
 import { Route } from "react-router-dom";
 import Nav from './components/navbar/Nav';
 import CreateActivity from './components/createActivity/CreateActivity';
@@ -6,15 +6,16 @@ import Home from './components/home/Home';
 
 function App() {
   return (
-    <div className='App'>
+    <div >
       <Route path='/'>
         <div >
           <Nav />
         </div>
       </Route>
       <Route exact path='/home'>
-        <div ><h1>Henry Countries</h1></div>
-        <Home />
+        <div className={style.article}>
+          <Home />
+        </div>
       </Route>
       <Route path='/countries'>
         <div ><h1>Countries</h1></div>

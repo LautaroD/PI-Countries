@@ -1,17 +1,17 @@
 .card {
-    width: 300px;
-    height: 280px;
+    width: 224px;
+    height: 330px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.212);
     background: #f5f5f5;
-    display: flex;
+    display: block;
     border-radius: 20px;
     border: 2px solid #c3c6ce;
-    justify-content: center;
-    position: relative;
     transition: 0.5s ease-out;
-    padding: 1.8rem;
-    margin: 20px;
-    margin-bottom: 45px;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 15px;
+    /* justify-content: center; */
+    /* position: relative; */
 }
 
 .cardButton {

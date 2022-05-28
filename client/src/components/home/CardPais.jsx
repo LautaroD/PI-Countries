@@ -4,8 +4,8 @@ import style from './assets/CardPais.module.css'
 function CardPais({ id, name, imgBandera, capital, poblacion, continente }) {
 
     return (
-        <div className={style.card}>
-            <div>
+        <div >
+            <div className={style.card}>
                 {/* <p>ID: {id}</p> */}
                 <img src={`${imgBandera}`} alt="Bandera" width="140" height="70" />
                 <h2>{name}</h2>

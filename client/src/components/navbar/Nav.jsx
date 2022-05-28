@@ -11,9 +11,10 @@ export default function Nav() {
                 <li><NavLink to="/home" activeClassName={style.active}>Inicio</NavLink></li>
                 <li><NavLink to="/countries" activeClassName={style.active}>Paises</NavLink></li>
                 <li><NavLink to="/activity" activeClassName={style.active}>Turismo</NavLink></li>
-                <SearchBar />
-
             </ul>
+            <span className={style.searchBar}>
+                <SearchBar />
+            </span>
         </div>
     )
 }
