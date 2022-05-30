@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux';
-import { searchByName, resetCountries, getAllCountries, searchBack } from '../../redux/actions';
+import { connect, useSelector } from 'react-redux';
+import { searchByName, searchBack, searchBackForm, searchByNameForm } from '../../redux/actions';
 import style from './assets/SearchBar.module.css'
 
-export const SearchBar = ({ searchByName, resetCountries, getAllCountries, searchBack }) => {
+export const SearchBar = ({ searchByName, searchBack, isInForm, dataFromForm, searchBackForm, searchByNameForm }) => {
     const [state, setState] = useState('');
     const [previousState, setPreviousState] = useState('');
 
-    // useEffect(() => {
-    //     if (previousState.length > state.length) {
-    //         if (state.length < 1) {
-    //             resetCountries();
-    //             getAllCountries();
-    //         }
-    //         else { searchBack(state) }
-    //     }
-    //     else { searchByName(state) }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [state])
+    const listCountries = useSelector((state) => (state.countryNames))
 
     useEffect(() => {
+        if (isInForm) {
+            if (previousState.length > state.length) {
+                searchBackForm(state);
+            }
+            else { searchByNameForm(state) }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state])
+
+    useEffect(() => {
+        if (isInForm) {
+            return
+        }
         if (previousState.length > state.length) {
             searchBack(state)
         }
@@ -52,13 +55,10 @@ export const SearchBar = ({ searchByName, resetCountries, getAllCountries, searc
                     onChange={(e) => onchange(e)}
                 />
                 <button className={style.reset} type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
                 </button>
             </form>
-        </div>
+        </div >
     )
 }
 
-export default connect(null, { searchByName, resetCountries, getAllCountries, searchBack })(SearchBar)
+export default connect(null, { searchByName, searchBack, searchBackForm, searchByNameForm })(SearchBar)

@@ -1,5 +1,6 @@
 import React from 'react';
-import style from './assets/CardPais.module.css'
+import style from './assets/CardPais.module.css';
+import { Link } from 'react-router-dom';
 
 function CardPais({ id, name, imgBandera, capital, poblacion, continente }) {
 
@@ -7,13 +8,15 @@ function CardPais({ id, name, imgBandera, capital, poblacion, continente }) {
         <div >
             <div className={style.card}>
                 {/* <p>ID: {id}</p> */}
-                <img src={`${imgBandera}`} alt="Bandera" width="140" height="70" />
+                <img className={style.bandera} src={`${imgBandera}`} alt="Bandera" width="100%" height="39%" />
                 <h2>{name}</h2>
-                <p>Capital: {capital}</p>
-                <p>Poblacion: {poblacion.toLocaleString('es')}</p>
+                {/* <p>Capital: {capital}</p> */}
+                {/* <p>Poblacion: {poblacion.toLocaleString('es')}</p> */}
                 <p>Continente: {continente}</p>
+                <Link to={`detail/${name}`}>
+                    <button className={style.cardButton}>More info</button>
+                </Link>
             </div>
-            <button className={style.cardButton}>More info</button>
         </div >
     )
 }

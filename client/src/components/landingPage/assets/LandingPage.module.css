@@ -1,0 +1,50 @@
+.h1 {
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    color: #fca311;
+    font-size: 45px;
+}
+
+.h2 {
+    position: absolute;
+    z-index: 2;
+    left: 60px;
+    top: 45px;
+    color: #fca311;
+    font-size: 35px;
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    left: 170px;
+    top: 50px;
+}
+
+.image img {
+    width: 100vw;
+    height: 100%;
+    transition-property: all
+}
+
+.textLocation {
+    text-align: center;
+    position: absolute;
+    color: white;
+}
+
+.slide>div {
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.location {
+    width: 500px;
+    position: absolute;
+    font-size: 20px;
+    top: 43vw;
+    right: 0vw;
+}

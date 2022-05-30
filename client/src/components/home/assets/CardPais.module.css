@@ -10,8 +10,9 @@
     padding: 5px;
     margin: 5px;
     margin-bottom: 15px;
+    text-align: center;
     /* justify-content: center; */
-    /* position: relative; */
+    position: relative;
 }
 
 .cardButton {
@@ -39,4 +40,8 @@
     transform: translate(-50%, 50%);
     opacity: 1;
     cursor: pointer;
+}
+
+.bandera {
+    border-radius: 25px;
 }

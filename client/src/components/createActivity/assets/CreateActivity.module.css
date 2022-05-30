@@ -8,3 +8,9 @@
 input {
     margin: 10px;
 }
+
+.cotainerCountries {
+    width: 250px;
+    height: 250px;
+    overflow: scroll;
+}

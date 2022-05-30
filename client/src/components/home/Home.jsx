@@ -1,16 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import CardPais from './CardPais';
-import { getAllCountries, resetCountries } from '../../redux/actions';
-import style from './assets/Home.module.css'
+import { getAllCountries } from '../../redux/actions';
+import style from './assets/Home.module.css';
+import Paginado from './Paginado';
 
-export const Home = ({ getAllCountries, resetCountries }) => {
+const ITEMS_PER_PAGE = 10;
+
+export const Home = ({ getAllCountries }) => {
     const paises = useSelector((state) => state.countries);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const indexLastCountrie = currentPage * ITEMS_PER_PAGE;
+    const indexFirstCountrie = indexLastCountrie - ITEMS_PER_PAGE;
+    const currentCountries = paises.slice(indexFirstCountrie, indexLastCountrie);
+
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (paises.length === 250) return
+        if (!paises) return
         dispatch(() => getAllCountries())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -18,8 +30,9 @@ export const Home = ({ getAllCountries, resetCountries }) => {
 
     return (
         <div >
+            <Paginado ITEMS_PER_PAGE={ITEMS_PER_PAGE} paises={paises.length} paginado={paginado} />
             <div className={style.cards}>
-                {paises.map(e => <CardPais
+                {currentCountries.map(e => <CardPais
                     key={e.id}
                     id={e.id}
                     name={e.name}
@@ -34,4 +47,4 @@ export const Home = ({ getAllCountries, resetCountries }) => {
     )
 }
 
-export default connect(null, { getAllCountries, resetCountries })(Home)
+export default connect(null, { getAllCountries })(Home)
