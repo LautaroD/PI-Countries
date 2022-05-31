@@ -1,11 +1,15 @@
 const { Router } = require('express');
 const countries = require('./countries.js');
-const activityController = require('../controllers/activityControllers.js')
+const { createActivity, getAllActivities, getActivitiesByName } = require('../controllers/activityControllers.js')
 
 const router = Router();
 
 router.use('/countries', countries);
 
-router.post('/activity', activityController)
+router.get('/activities', getAllActivities)
+
+router.get('/getActivitiesByName', getActivitiesByName)
+
+router.post('/activity', createActivity)
 
 module.exports = router;

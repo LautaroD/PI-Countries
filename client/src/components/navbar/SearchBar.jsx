@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { connect, useSelector } from 'react-redux';
-import { searchByName, searchBack, searchBackForm, searchByNameForm } from '../../redux/actions';
+import { connect } from 'react-redux';
+import { searchByName, searchBack, searchByNameForm, searchBackForm } from '../../redux/actions';
 import style from './assets/SearchBar.module.css'
 
-export const SearchBar = ({ searchByName, searchBack, isInForm, dataFromForm, searchBackForm, searchByNameForm }) => {
+export const SearchBar = ({ searchByName, searchBack, isInForm, searchByNameForm, searchBackForm, dataFromForm }) => {
     const [state, setState] = useState('');
     const [previousState, setPreviousState] = useState('');
 
-    const listCountries = useSelector((state) => (state.countryNames))
 
     useEffect(() => {
         if (isInForm) {
             if (previousState.length > state.length) {
-                searchBackForm(state);
+                setState('');
+                searchBackForm(dataFromForm)
             }
             else { searchByNameForm(state) }
         }
@@ -61,4 +61,4 @@ export const SearchBar = ({ searchByName, searchBack, isInForm, dataFromForm, se
     )
 }
 
-export default connect(null, { searchByName, searchBack, searchBackForm, searchByNameForm })(SearchBar)
+export default connect(null, { searchByName, searchBack, searchByNameForm, searchBackForm })(SearchBar)

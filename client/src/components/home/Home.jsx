@@ -4,6 +4,7 @@ import CardPais from './CardPais';
 import { getAllCountries } from '../../redux/actions';
 import style from './assets/Home.module.css';
 import Paginado from './Paginado';
+import Filtrado from './Filtrado';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -30,6 +31,7 @@ export const Home = ({ getAllCountries }) => {
 
     return (
         <div >
+            <Filtrado />
             <Paginado ITEMS_PER_PAGE={ITEMS_PER_PAGE} paises={paises.length} paginado={paginado} />
             <div className={style.cards}>
                 {currentCountries.map(e => <CardPais

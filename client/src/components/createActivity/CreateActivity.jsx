@@ -4,9 +4,9 @@ import SearchBar from '../navbar/SearchBar';
 // import axios from 'axios';
 // import { connect } from 'react-redux';
 import style from './assets/CreateActivity.module.css'
-import { updateCountries, resetCountries } from '../../redux/actions';
+import { updateCountries, resetCountries, updateCountriesForm } from '../../redux/actions';
 
-const CreateActivity = ({ updateCountries, resetCountries }) => {
+const CreateActivity = ({ updateCountries, resetCountries, updateCountriesForm }) => {
     // const dispatch = useDispatch();
 
     const paises = useSelector((state) => state.countryNames);
@@ -36,7 +36,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
         let country = (e.target.innerText.substring(0, e.target.innerText.length - 1));
         setState({ ...state, pais: [...state.pais].filter(e => e !== country) })
         console.log(state.pais)
-        // resetCountries(state.pais)
+        // updateCountriesForm();
     }
 
     useEffect(() => {
@@ -57,6 +57,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
             body: data,
             headers: new Headers({ "Content-Type": "application/json" })
         })
+        setState({ nombre: '', dificultad: 0, duracion: 0, temporada: '', pais: [] })
     }
 
     return (
@@ -126,4 +127,4 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
     )
 }
 
-export default connect(null, { updateCountries, resetCountries })(CreateActivity)
+export default connect(null, { updateCountries, resetCountries, updateCountriesForm })(CreateActivity)

@@ -1,11 +1,18 @@
-import { GET_ALL_COUNTRIES, RESET_COUNTRIES, SEARCH_BY_NAME, SEARCH_BACK, GET_ONE_COUNTRY, UPDATE_COUNTRIES, SEARCH_BACK_FORM, SEARCH_BY_NAME_FORM } from "../actions"
+import {
+    GET_ALL_COUNTRIES, RESET_COUNTRIES, SEARCH_BY_NAME,
+    SEARCH_BACK, GET_ONE_COUNTRY, UPDATE_COUNTRIES,
+    CONTINENT_FILTER, RESET_COUNTRIES_ORDER, ALPHABETIC_ORDER,
+    POBLATION_ORDER, GET_ALL_ACTIVITIES, GET_ONE_ACTIVITIE,
+    SEARCH_BY_NAME_FORM, SEARCH_BACK_FORM
+} from "../actions"
 
 const initialState = {
     countries: [],
     countriesCopy: [],
     country: [],
     countryNames: [],
-    countryNamesCopy: []
+    countryNamesCopy: [],
+    touristActivities: []
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -36,7 +43,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case SEARCH_BACK_FORM:
             return {
                 ...state,
-                countryNames: state.countryNames.filter(pais => !payload.includes(pais))
+                countryNames: state.countryNamesCopy.filter(pais => !payload.includes(pais))
             }
         case UPDATE_COUNTRIES:
             return {
@@ -52,6 +59,38 @@ const rootReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 country: payload
+            }
+        case RESET_COUNTRIES_ORDER:
+            return {
+                ...state,
+                countries: state.countriesCopy.filter(pais => (pais))
+            }
+        case CONTINENT_FILTER:
+            return {
+                ...state,
+                countries: state.countries.filter(pais => pais.continente === payload)
+            }
+        case ALPHABETIC_ORDER:
+            return {
+                ...state,
+                countries: (payload === 'A-Z') ? state.countries.sort((a, b) => a.name.localeCompare(b.name))
+                    : state.countries.sort((a, b) => a.name.localeCompare(b.name)).reverse()
+            }
+        case POBLATION_ORDER:
+            return {
+                ...state,
+                countries: (payload === 'max') ? state.countries.sort((a, b) => b.poblacion - a.poblacion)
+                    : state.countries.sort((a, b) => b.poblacion - a.poblacion).reverse()
+            }
+        case GET_ALL_ACTIVITIES:
+            return {
+                ...state,
+                touristActivities: payload
+            }
+        case GET_ONE_ACTIVITIE:
+            return {
+                ...state,
+                countries: payload[0].countries,
             }
         default:
             return state;
