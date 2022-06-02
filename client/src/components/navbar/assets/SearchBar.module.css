@@ -14,7 +14,7 @@
     --height-of-input: 40px;
     --border-height: 2px;
     --input-bg: #fff;
-    --border-color: #2f2ee9;
+    --border-color: #0d1b2a;
     --border-radius: 30px;
     --after-border-radius: 1px;
     position: relative;
@@ -61,16 +61,4 @@ input:focus {
     background: none;
     opacity: 0;
     visibility: hidden;
-}
-
-/* close button shown when typing */
-input:not(:placeholder-shown)~.reset {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* sizing svg icons */
-.form svg {
-    width: 17px;
-    margin-top: 3px;
 }

@@ -7,7 +7,6 @@ export const SearchBar = ({ searchByName, searchBack, isInForm, searchByNameForm
     const [state, setState] = useState('');
     const [previousState, setPreviousState] = useState('');
 
-
     useEffect(() => {
         if (isInForm) {
             if (previousState.length > state.length) {

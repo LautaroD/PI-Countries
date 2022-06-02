@@ -1,16 +1,77 @@
+body {
+    background-color: #e3e3e3;
+}
+
 .formulario {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    align-items: center;
+    max-width: 38em;
+    padding: 1em 3em 2em 3em;
+    margin: 2em auto;
+    background-color: #fff;
+    border-radius: 4.2px;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
 }
 
-input {
+.dataForm {
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    padding: 10px;
+    margin-right: 20px;
     margin: 10px;
 }
 
 .cotainerCountries {
     width: 250px;
     height: 250px;
-    overflow: scroll;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 4.2px;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+
+.containerSelector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+.searchBar {
+    padding: 3px;
+}
+
+.ultimoContainerCreo {
+    display: flex;
+}
+
+.button {
+    margin: 5px;
+    width: 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.createButton {
+    margin-top: 20px;
+    border: 2px solid #ffb703;
+    background-color: #ffb703;
+    border-radius: 0.9em;
+    padding: 0.5em 1.2em 0.5em 1em;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.createButton:hover {
+    background-color: #C48C00;
 }

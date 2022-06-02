@@ -13,12 +13,13 @@ export default function Nav() {
 
         <div className={style.navbar}>
             <ul>
-                <li><NavLink to="/home" activeClassName={style.active}>Inicio</NavLink></li>
-                <li><NavLink to="/countries" activeClassName={style.active}>Paises</NavLink></li>
-                <li><NavLink to="/activity" activeClassName={style.active}>Turismo</NavLink></li>
+                <li><NavLink to="/home" activeClassName={style.active}><button className={style.btn}>Inicio</button></NavLink></li>
+                <li><NavLink to="/activity" activeClassName={style.active}><button className={style.btn}>Crear Actividad</button></NavLink></li>
             </ul>
             <span className={style.searchBar}>
-                <SearchBar />
+                {
+                    (location.pathname !== '/activity') ? <SearchBar /> : null
+                }
             </span>
         </div>
     )

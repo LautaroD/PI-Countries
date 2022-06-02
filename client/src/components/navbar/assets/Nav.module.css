@@ -1,13 +1,14 @@
 .navbar {
-    background-color: #3d5a80;
+    background-color: #ffb703;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom-width: 4px;
+    outline: 4px solid #353535;
 }
 
 ul {
     display: flex;
-    text-decoration: none;
 }
 
 li {
@@ -16,8 +17,49 @@ li {
     padding: 10px;
 }
 
+.btn {
+    font-size: 18px;
+    color: #212529;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
+.btn:focus,
+.btn:hover {
+    color: #0d1b2a;
+}
+
+.btn:focus:after,
+.btn:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+.btn:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #0d1b2a;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+
 .active {
-    font-size: 1.5em;
+    background-color: #D99B00;
+    border-radius: 25px;
 }
 
 .searchBar {

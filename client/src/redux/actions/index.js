@@ -14,7 +14,6 @@ export const POBLATION_ORDER = 'POBLATION_ORDER';
 export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
 export const GET_ONE_ACTIVITIE = 'GET_ONE_ACTIVITIE';
 export const SEARCH_BACK_FORM = 'SEARCH_BACK_FORM';
-export const UPDATE_COUNTRIES_FORM = 'UPDATE_COUNTRIES_FORM';
 
 export const getAllCountries = () => {
     return async function (dispatch) {
@@ -32,7 +31,7 @@ export const getAllActivities = () => {
 
 export const getOneCountry = (name) => {
     return async function (dispatch) {
-        const response = (await axios.get(`http://localhost:3001/countries?name=${name}`)).data;
+        const response = (await axios.get(`http://localhost:3001/countries/detailCountry?name=${name}`)).data;
         return dispatch({ type: GET_ONE_COUNTRY, payload: response })
     }
 }
@@ -71,10 +70,6 @@ export const searchByNameForm = (data) => {
 
 export const searchBackForm = (data) => {
     return { type: SEARCH_BACK_FORM, payload: data }
-}
-
-export const updateCountriesForm = () => {
-    return { type: UPDATE_COUNTRIES_FORM, payload: null }
 }
 //=========================================================================//
 

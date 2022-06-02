@@ -52,6 +52,27 @@ async function getPaisName(req, res, next) {
     }
 }
 
+async function getPaisNameExact(req, res, next) {
+    let { name } = req.query;
+    try {
+        if (name.length <= 0) next()
+        let pais = await Country.findAll({
+            where: { name: `${name}` },
+            include: [{
+                model: TouristActivity,
+                through: { attributes: [] }
+            }]
+        });
+        if (!pais) {
+            res.status(400).send('Pais no encontrado')
+        } else {
+            res.send(pais)
+        }
+    } catch (error) {
+        next()
+    }
+}
+
 async function getIdPais(req, res, next) {
     let { idPais } = req.params;
     idPais = idPais.toUpperCase();
@@ -69,5 +90,6 @@ async function getIdPais(req, res, next) {
 module.exports = {
     getAllCountries,
     getIdPais,
-    getPaisName
+    getPaisName,
+    getPaisNameExact
 }

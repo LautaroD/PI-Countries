@@ -22,11 +22,7 @@ function App() {
           <Home />
         </div>
       </Route>
-      <Route path='/countries'>
-        <div ><h1>Countries</h1></div>
-      </Route>
       <Route path='/activity'>
-        <div ><h1>Actividades turisticas</h1></div>
         <CreateActivity />
       </Route>
       <Route exact path='/detail/:pais' >

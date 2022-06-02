@@ -1,50 +1,65 @@
+.container {
+    background-image: url(backgroundImage.jpg);
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B6EAFF;
+}
+
 .h1 {
     position: absolute;
-    z-index: 2;
     left: 20px;
+    top: 0px;
     color: #fca311;
     font-size: 45px;
+    text-shadow: 1px 1px black;
 }
 
 .h2 {
     position: absolute;
-    z-index: 2;
-    left: 60px;
-    top: 45px;
+    left: 55px;
+    top: 42px;
     color: #fca311;
     font-size: 35px;
+    text-shadow: 1px 1px black;
 }
 
 .logo {
     position: absolute;
-    z-index: 2;
-    left: 170px;
+    left: 160px;
     top: 50px;
 }
 
-.image img {
-    width: 100vw;
-    height: 100%;
-    transition-property: all
+.btnEntrar {
+    background: #FBCA1F;
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 18px;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+    cursor: pointer;
 }
 
-.textLocation {
-    text-align: center;
-    position: absolute;
-    color: white;
+.btnEntrar:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+    cursor: pointer;
 }
 
-.slide>div {
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    height: 100vh;
+.btnEntrar:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
 }
 
-.location {
-    width: 500px;
-    position: absolute;
-    font-size: 20px;
-    top: 43vw;
-    right: 0vw;
+.ingreso {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }

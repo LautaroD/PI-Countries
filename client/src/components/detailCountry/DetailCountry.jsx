@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { getOneCountry } from '../../redux/actions';
+import style from './assets/DetailCountry.module.css'
 
 function DetailCountry({ getOneCountry }) {
   const infoPais = useSelector((state) => state.country);
@@ -16,29 +17,35 @@ function DetailCountry({ getOneCountry }) {
 
   // const actividadesTuristicas = infoPais[0].touristActivities.forEach(element => {   });
   // console.log(touristActivities)
-  console.log(infoPais)
   return (
-    <div>
-      <h1>Hello</h1>
+    <div className={style.body}>
       {infoPais.map(e =>
-      (<div key={e.id}>
-        <p>id={e.id}</p>
-        <p>name={e.name}</p>
-        <p>capital={e.capital}</p>
-        <p>poblacion={e.poblacion.toLocaleString('es')}</p>
-        <p>continente={e.continente}</p>
-        <p>subRegion={e.subRegion}</p>
-        <p>Area={e.area.toLocaleString('es')}km2</p>
-        <h2>Actividades Turisticas={e.touristActivities.map(e => (
-          <div key={e.id}>
-            <p>Nombre: {e.nombre}</p>
-            <p>Dificultad: {e.dificultad}</p>
-            <p>Duracion: {e.duracion}</p>
-            <p>Temporada: {e.temporada}</p>
+      (<div className={style.none} key={e.id} >
+        <h1>{e.name}</h1>
+        <div className={style.container}>
+          <img src={`${e.imgBandera}`} alt="Bandera" className={style.bandera} />
+          <div className={style.detailCountry}>
+            <h3>Capital: {e.capital}</h3>
+            <h3>Población: {e.poblacion.toLocaleString('es')}</h3>
+            <h3>Continente: {e.continente}</h3>
+            <h3>SubRegion: {e.subRegion}</h3>
+            <h3>Area: {e.area.toLocaleString('es')}km2</h3>
+            <p>ID: {e.id}</p>
           </div>
-        ))}</h2>
-        <img src={`${e.imgBandera}`} alt="Bandera" width="350" height="200" />
-      </div>)
+          <div className={style.actividades} >
+            <h2>Actividades Turisticas: {e.touristActivities.map(e => (
+              <div className={style.actividad} key={e.id}>
+                <hr></hr>
+                <p>Nombre: {e.nombre}  </p>
+                <p>Dificultad: {e.dificultad} </p>
+                <p>Duracion: {e.duracion} </p>
+                <p>Temporada: {e.temporada} </p>
+              </div>
+            ))}</h2>
+          </div>
+        </div>
+      </div>
+      )
       )
       }
     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ordenamientoContinente, resetCountriesOrder, ordenAlfabetico, ordenPoblacional, getAllActivities, getOneActivitie } from '../../redux/actions'
 import { connect, useSelector, useDispatch } from 'react-redux';
+import style from './assets/Filtrado.module.css'
 
 const Filtrado = ({ ordenamientoContinente, resetCountriesOrder, ordenAlfabetico, ordenPoblacional, getAllActivities, getOneActivitie }) => {
     const dispatch = useDispatch();
@@ -26,11 +27,16 @@ const Filtrado = ({ ordenamientoContinente, resetCountriesOrder, ordenAlfabetico
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state])
 
+    const result = [].concat.apply([], touristActivities.map(element => { return element.nombre }));
+    const activitiesForRender = result.filter((element, index) => {
+        return result.indexOf(element) === index;
+    })
+    let i = 0;
     return (
-        <div>Filtrado
-            <form>
+        <div>
+            <form className={style.container}>
                 <label htmlFor='asc/desc'>
-                    <select value={state.order} onChange={(e) => setState({ ...state, order: e.target.value })}>
+                    <select className={style.selector} value={state.order} onChange={(e) => setState({ ...state, order: e.target.value })}>
                         <option value={''}>Name</option>
                         <option value={''}>--------</option>
                         <option value='A-Z'>[A-Z]</option>
@@ -38,15 +44,15 @@ const Filtrado = ({ ordenamientoContinente, resetCountriesOrder, ordenAlfabetico
                     </select>
                 </label>
                 <label htmlFor='poblacion'>
-                    <select value={state.poblacion} onChange={(e) => setState({ ...state, poblacion: e.target.value })}>
+                    <select className={style.selector} value={state.poblacion} onChange={(e) => setState({ ...state, poblacion: e.target.value })}>
                         <option value={''}>Poblacion</option>
                         <option value={''}>--------</option>
-                        <option value='max'>Max</option>
-                        <option value='min'>Min</option>
+                        <option value='max'>Higher</option>
+                        <option value='min'>Lower</option>
                     </select>
                 </label>
                 <label htmlFor='continente'>
-                    <select value={state.continente} onChange={(e) => setState({ ...state, continente: e.target.value })}>
+                    <select className={style.selector} value={state.continente} onChange={(e) => setState({ ...state, continente: e.target.value })}>
                         <option value={''}>Continente</option>
                         <option value={''}>--------</option>
                         <option value="Africa">Africa</option>
@@ -55,14 +61,15 @@ const Filtrado = ({ ordenamientoContinente, resetCountriesOrder, ordenAlfabetico
                         <option value="Asia">Asia</option>
                         <option value="Europe">Europe</option>
                         <option value="Oceania">Oceania</option>
+                        <option value="Antarctica">Antarctica</option>
                     </select>
                 </label>
                 <label htmlFor='actividadTuristica'>
-                    <select value={state.actividadTuristica} onChange={(e) => setState({ ...state, actividadTuristica: e.target.value })}>
+                    <select className={style.selector} value={state.actividadTuristica} onChange={(e) => setState({ ...state, actividadTuristica: e.target.value })}>
                         <option value={''}>Actividad Turistica</option>
                         <option value={''}>--------</option>
-                        {touristActivities.map(e => (
-                            <option key={e.id} value={e.nombre}>{e.nombre}</option>
+                        {activitiesForRender.map(element => (
+                            <option key={i++} value={element}>{element}</option>
                         ))}
                     </select>
                 </label>

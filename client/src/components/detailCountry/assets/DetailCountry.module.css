@@ -1,0 +1,50 @@
+.none {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    width: 62%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    overflow-x: hidden;
+    border-radius: 4.2px;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+
+.bandera {
+    height: 260px;
+    width: 50%;
+    outline: 3px solid #353535;
+}
+
+.detailCountry {
+    width: 50%;
+    height: 260px;
+    outline: 3px solid #353535;
+}
+
+
+.actividades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+
+}
+
+.actividad {
+    width: 350px;
+}
+
+.actividad p {
+    width: 350px;
+    font-size: medium;
+}

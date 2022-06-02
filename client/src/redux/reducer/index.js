@@ -90,7 +90,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case GET_ONE_ACTIVITIE:
             return {
                 ...state,
-                countries: payload[0].countries,
+                countries: [].concat.apply([], (payload.map(element => { return element.countries })))
             }
         default:
             return state;
