@@ -40,7 +40,8 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
         if (state.nombre.length < 1 || state.dificultad === 0 || state.duracion === 0 || state.temporada.length < 1 || state.pais.length < 1) {
             return alert('Faltan completar datos')
         }
-
+        if (state.duracion < 1) return alert('La duración de la actividad no puede ser negativa!')
+        if (state.nombre.length > 15) return alert('El nombre de la actividad es muy largo!')
         const data = JSON.stringify(state);
         fetch('http://localhost:3001/activity', {
             method: 'POST',
