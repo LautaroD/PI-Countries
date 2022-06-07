@@ -45,7 +45,7 @@ async function getPaisName(req, res, next) {
         if (!pais) {
             res.status(400).send('Pais no encontrado')
         } else {
-            res.send(pais)
+            res.status(200).send(pais)
         }
     } catch (error) {
         next()
@@ -66,7 +66,7 @@ async function getPaisNameExact(req, res, next) {
         if (!pais) {
             res.status(400).send('Pais no encontrado')
         } else {
-            res.send(pais)
+            res.status(200).send(pais)
         }
     } catch (error) {
         next()
@@ -79,8 +79,8 @@ async function getIdPais(req, res, next) {
     try {
         let pais = await Country.findByPk(idPais);
         if (!pais) {
-            res.send('ID Erronea')
-        } else res.send(pais)
+            res.status(400).send('ID Erronea')
+        } else res.status(200).send(pais)
     } catch (error) {
         next(error)
     }

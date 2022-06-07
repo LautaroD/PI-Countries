@@ -28,7 +28,7 @@ async function getAllActivities(req, res, next) {
                 through: { attributes: [] }
             }]
         });
-        return res.send(activities)
+        return res.status(200).send(activities)
     } catch (error) {
         next(error)
     }
@@ -36,6 +36,7 @@ async function getAllActivities(req, res, next) {
 
 async function getActivitiesByName(req, res, next) {
     let { name } = req.query;
+    if (!name) return res.sendStatus(404);
     try {
         let activities = await TouristActivity.findAll({
             where: {
@@ -43,7 +44,7 @@ async function getActivitiesByName(req, res, next) {
             },
             include: Country
         });
-        return res.send(activities)
+        return res.status(200).send(activities)
     } catch (error) {
         next(error)
     }
