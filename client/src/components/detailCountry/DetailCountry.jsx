@@ -38,7 +38,7 @@ function DetailCountry({ getOneCountry }) {
                 <hr></hr>
                 <p>Nombre: {e.nombre}  </p>
                 <p>Dificultad: {e.dificultad} </p>
-                <p>Duracion: {e.duracion} </p>
+                <p>Duracion: {e.duracion} hs</p>
                 <p>Temporada: {e.temporada} </p>
               </div>
             ))}</h2>

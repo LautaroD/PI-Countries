@@ -41,6 +41,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
             return alert('Faltan completar datos')
         }
         if (state.duracion < 1) return alert('La duración de la actividad no puede ser negativa!')
+        if (state.duracion > 8) return alert('La duración de la actividad no puede durar mas de 8 horas!')
         if (state.nombre.length > 15) return alert('El nombre de la actividad es muy largo!')
         const data = JSON.stringify(state);
         fetch('http://localhost:3001/activity', {
@@ -49,6 +50,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
             headers: new Headers({ "Content-Type": "application/json" })
         })
         setState({ nombre: '', dificultad: 0, duracion: 0, temporada: '', pais: [] })
+        alert('Actividad creada')
     }
 
     return (
@@ -77,7 +79,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
                 <label>
                     Temporada:
                     <select className={style.dataForm} value={state.temporada} onChange={(e) => setState({ ...state, temporada: e.target.value })}>
-                        <option value="noValue">---</option>
+                        <option value="null">---</option>
                         <option value="verano">Verano</option>
                         <option value="otoño">Otoño</option>
                         <option value="invierno">Invierno</option>
@@ -86,7 +88,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
                 </label>
                 <label htmlFor='dificultadActividad'>Dificultad:
                     <select className={style.dataForm} value={state.dificultad} onChange={(e) => setState({ ...state, dificultad: e.target.value })}>
-                        <option value="noValue">---</option>
+                        <option value="null">---</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
