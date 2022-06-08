@@ -44,7 +44,8 @@ async function getActivitiesByName(req, res, next) {
             },
             include: Country
         });
-        return res.status(200).send(activities)
+        if (activities.length <= 0) return res.status(404).send('Actividad no encontrada')
+        else return res.status(200).send(activities)
     } catch (error) {
         next(error)
     }

@@ -42,7 +42,7 @@ async function getPaisName(req, res, next) {
                 through: { attributes: [] }
             }]
         });
-        if (!pais) {
+        if (pais.length <= 0) {
             res.status(400).send('Pais no encontrado')
         } else {
             res.status(200).send(pais)
@@ -63,7 +63,7 @@ async function getPaisNameExact(req, res, next) {
                 through: { attributes: [] }
             }]
         });
-        if (!pais) {
+        if (pais.length <= 0) {
             res.status(400).send('Pais no encontrado')
         } else {
             res.status(200).send(pais)

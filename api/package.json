@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "mocha --timeout 10000 -w ./tests/**/*.spec.js"
+    "start": "nodemon -L",
+    "test": "jest --watchAll --verbose --detectOpenHandles"
   },
   "author": "Henry",
   "license": "ISC",
