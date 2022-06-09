@@ -17,27 +17,27 @@ export const SEARCH_BACK_FORM = 'SEARCH_BACK_FORM';
 
 export const getAllCountries = () => {
     return async function (dispatch) {
-        const response = (await axios.get('http://localhost:3001/countries')).data;
+        const response = (await axios.get('/countries')).data;
         return dispatch({ type: GET_ALL_COUNTRIES, payload: response })
     }
 }
 
 export const getAllActivities = () => {
     return async function (dispatch) {
-        const response = (await axios.get('http://localhost:3001/activities')).data;
+        const response = (await axios.get('/activities')).data;
         return dispatch({ type: GET_ALL_ACTIVITIES, payload: response })
     }
 }
 
 export const getOneCountry = (name) => {
     return async function (dispatch) {
-        const response = (await axios.get(`http://localhost:3001/countries/detailCountry?name=${name}`)).data;
+        const response = (await axios.get(`/countries/detailCountry?name=${name}`)).data;
         return dispatch({ type: GET_ONE_COUNTRY, payload: response })
     }
 }
 export const getOneActivitie = (name) => {
     return async function (dispatch) {
-        const response = (await axios.get(`http://localhost:3001/getActivitiesByName?name=${name}`)).data;
+        const response = (await axios.get(`/getActivitiesByName?name=${name}`)).data;
         return dispatch({ type: GET_ONE_ACTIVITIE, payload: response })
     }
 }
