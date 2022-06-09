@@ -90,7 +90,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case GET_ONE_ACTIVITIE:
             return {
                 ...state,
-                countries: [].concat.apply([], (payload.map(element => { return element.countries })))
+                countries: ([].concat.apply([], (payload.map(element => { return element.countries })))).filter((element, index, array) => array.findIndex(t => t.id === element.id) === index)
             }
         default:
             return state;
