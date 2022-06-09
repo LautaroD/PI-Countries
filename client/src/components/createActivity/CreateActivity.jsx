@@ -44,7 +44,7 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
         if (state.duracion > 8) return alert('La duración de la actividad no puede durar mas de 8 horas!')
         if (state.nombre.length > 15) return alert('El nombre de la actividad es muy largo!')
         const data = JSON.stringify(state);
-        fetch('http://localhost:3001/activity', {
+        fetch(`https://pi-countries-lautarod.herokuapp.com/activity`, {
             method: 'POST',
             body: data,
             headers: new Headers({ "Content-Type": "application/json" })
