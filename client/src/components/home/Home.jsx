@@ -28,7 +28,9 @@ export const Home = ({ getAllCountries }) => {
     useEffect(() => {
         if (!paises) return
         dispatch(() => getAllCountries())
-        setIsLoading(false)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 5000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
