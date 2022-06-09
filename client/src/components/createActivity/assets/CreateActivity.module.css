@@ -75,3 +75,18 @@ body {
 .createButton:hover {
     background-color: #C48C00;
 }
+
+@media only screen and (max-width: 700px) {
+    .formulario {
+        max-width: 100%;
+    }
+
+    .ultimoContainerCreo {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .cotainerCountries {
+        max-width: 100%;
+    }
+}

@@ -30,7 +30,7 @@ export const Home = ({ getAllCountries }) => {
         dispatch(() => getAllCountries())
         setTimeout(() => {
             setIsLoading(false)
-        }, 5000);
+        }, 2000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
