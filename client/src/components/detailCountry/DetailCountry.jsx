@@ -12,6 +12,9 @@ function DetailCountry({ getOneCountry }) {
 
   useEffect(() => {
     dispatch(() => getOneCountry(nameCountry))
+    return () => {
+
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
