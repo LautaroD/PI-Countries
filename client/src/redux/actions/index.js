@@ -14,6 +14,7 @@ export const POBLATION_ORDER = 'POBLATION_ORDER';
 export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
 export const GET_ONE_ACTIVITIE = 'GET_ONE_ACTIVITIE';
 export const SEARCH_BACK_FORM = 'SEARCH_BACK_FORM';
+export const CLEAR_DETAIL_COUNTRY = 'CLEAR_DETAIL_COUNTRY';
 
 export const getAllCountries = () => {
     return async function (dispatch) {
@@ -83,6 +84,10 @@ export const ordenAlfabetico = (data) => {
 
 export const ordenPoblacional = (data) => {
     return { type: POBLATION_ORDER, payload: data }
+}
+
+export const clearDetailCountry = () => {
+    return { type: CLEAR_DETAIL_COUNTRY, payload: [] }
 }
 
 

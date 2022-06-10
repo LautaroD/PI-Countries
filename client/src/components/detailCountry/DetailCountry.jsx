@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { getOneCountry } from '../../redux/actions';
+import { getOneCountry, clearDetailCountry } from '../../redux/actions';
 import style from './assets/DetailCountry.module.css'
 
-function DetailCountry({ getOneCountry }) {
+function DetailCountry({ getOneCountry, clearDetailCountry }) {
   const infoPais = useSelector((state) => state.country);
   const dispatch = useDispatch();
   let location = useLocation();
@@ -13,7 +13,7 @@ function DetailCountry({ getOneCountry }) {
   useEffect(() => {
     dispatch(() => getOneCountry(nameCountry))
     return () => {
-
+      clearDetailCountry();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -55,4 +55,4 @@ function DetailCountry({ getOneCountry }) {
   )
 }
 
-export default connect(null, { getOneCountry })(DetailCountry)
+export default connect(null, { getOneCountry, clearDetailCountry })(DetailCountry)

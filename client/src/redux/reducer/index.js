@@ -3,7 +3,7 @@ import {
     SEARCH_BACK, GET_ONE_COUNTRY, UPDATE_COUNTRIES,
     CONTINENT_FILTER, RESET_COUNTRIES_ORDER, ALPHABETIC_ORDER,
     POBLATION_ORDER, GET_ALL_ACTIVITIES, GET_ONE_ACTIVITIE,
-    SEARCH_BY_NAME_FORM, SEARCH_BACK_FORM
+    SEARCH_BY_NAME_FORM, SEARCH_BACK_FORM, CLEAR_DETAIL_COUNTRY
 } from "../actions"
 
 const initialState = {
@@ -91,6 +91,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 countries: ([].concat.apply([], (payload.map(element => { return element.countries })))).filter((element, index, array) => array.findIndex(t => t.id === element.id) === index)
+            }
+        case CLEAR_DETAIL_COUNTRY:
+            return {
+                ...state,
+                country: []
             }
         default:
             return state;
