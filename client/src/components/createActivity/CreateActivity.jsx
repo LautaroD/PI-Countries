@@ -3,6 +3,7 @@ import { connect, useSelector } from 'react-redux';
 import SearchBar from '../navbar/SearchBar';
 import style from './assets/CreateActivity.module.css'
 import { updateCountries, resetCountries } from '../../redux/actions';
+import axios from 'axios';
 
 const CreateActivity = ({ updateCountries, resetCountries }) => {
 
@@ -43,12 +44,13 @@ const CreateActivity = ({ updateCountries, resetCountries }) => {
         if (state.duracion < 1) return alert('La duración de la actividad no puede ser negativa!')
         if (state.duracion > 8) return alert('La duración de la actividad no puede durar mas de 8 horas!')
         if (state.nombre.length > 15) return alert('El nombre de la actividad es muy largo!')
-        const data = JSON.stringify(state);
-        fetch(`https://pi-countries-lautarod.herokuapp.com/activity`, {
-            method: 'POST',
-            body: data,
-            headers: new Headers({ "Content-Type": "application/json" })
-        })
+        // const data = JSON.stringify(state);
+        // fetch(`https://pi-countries-lautarod.herokuapp.com/activity`, {
+        //     method: 'POST',
+        //     body: data,
+        //     headers: new Headers({ "Content-Type": "application/json" })
+        // })
+        axios.post('/activity', state)
         setState({ nombre: '', dificultad: 0, duracion: 0, temporada: '', pais: [] })
         alert('Actividad creada')
     }

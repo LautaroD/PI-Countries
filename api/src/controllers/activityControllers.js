@@ -51,10 +51,29 @@ async function getActivitiesByName(req, res, next) {
     }
 }
 
+// async function deleteActivity(req, res, next) {
+//     let { id } = req.params;
+//     try {
+//         // let actividad = await TouristActivity.findOne({ where: { nombre: name } });
+//         // actividad.destroy();
+//         await TouristActivity.destroy({
+//             where: {
+//                 id: id
+//             }
+//         });
+//         res.send('Eliminado con exito')
+//         // if (actividad.length === 0) return res.sendStatus(200)
+//         // else return res.sendStatus(404)
+//     } catch (error) {
+//         next(error)
+//     }
+// }
+
 
 
 module.exports = {
     createActivity,
     getAllActivities,
-    getActivitiesByName
+    getActivitiesByName,
+    deleteActivity
 }

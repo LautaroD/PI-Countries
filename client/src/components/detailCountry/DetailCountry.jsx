@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { getOneCountry, clearDetailCountry } from '../../redux/actions';
-import style from './assets/DetailCountry.module.css'
+import style from './assets/DetailCountry.module.css';
 
 function DetailCountry({ getOneCountry, clearDetailCountry }) {
   const infoPais = useSelector((state) => state.country);
@@ -18,8 +18,6 @@ function DetailCountry({ getOneCountry, clearDetailCountry }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const actividadesTuristicas = infoPais[0].touristActivities.forEach(element => {   });
-  // console.log(touristActivities)
   return (
     <div className={style.body}>
       {infoPais.map(e =>

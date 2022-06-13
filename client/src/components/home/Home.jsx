@@ -11,7 +11,6 @@ let ITEMS_PER_PAGE = 10;
 export const Home = ({ getAllCountries }) => {
     const paises = useSelector((state) => state.countries);
     const [currentPage, setCurrentPage] = useState(1);
-    const [isLoading, setIsLoading] = useState(true);
 
     if (currentPage === 1) ITEMS_PER_PAGE = 9;
     else ITEMS_PER_PAGE = 10;
@@ -28,32 +27,19 @@ export const Home = ({ getAllCountries }) => {
     useEffect(() => {
         if (!paises) return
         dispatch(() => getAllCountries())
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 2000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         setCurrentPage(1);
-    }, [paises])
-
-    const loader = () => (
-        <div className={style.loaderRectangle}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    )
+    }, [paises]);
 
 
     if (currentPage < 1) setCurrentPage(1);
     if (currentPage > 25) setCurrentPage(25);
     return (
         <div className={style.container}>
-            {(isLoading) ? loader() :
+            {(paises.length <= 0) ? <h1>No se encontraron paises</h1> :
                 <>
                     <div className={style.filter}>
                         <Filtrado />
@@ -69,7 +55,7 @@ export const Home = ({ getAllCountries }) => {
                             continente={e.continente}
                         />)}
                     </div>
-                    <Paginado ITEMS_PER_PAGE={ITEMS_PER_PAGE} paises={paises.length} paginado={paginado} />
+                    <Paginado ITEMS_PER_PAGE={ITEMS_PER_PAGE} paises={paises.length} paginado={paginado} number={currentPage} />
                 </>
             }
         </div>

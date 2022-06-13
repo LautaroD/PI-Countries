@@ -3,7 +3,7 @@ import style from './assets/Paginado.module.css';
 import leftArrow from './assets/left-arrow.svg'
 import rightArrow from './assets/right-arrow.svg'
 
-export default function Paginado({ ITEMS_PER_PAGE, paises, paginado }) {
+export default function Paginado({ ITEMS_PER_PAGE, paises, paginado, number }) {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(paises / ITEMS_PER_PAGE); i++) {
@@ -27,6 +27,7 @@ export default function Paginado({ ITEMS_PER_PAGE, paises, paginado }) {
                     </li>
                 ))} */}
                 <button className={style.boton} onClick={() => goToPreviousPage()}> <img src={leftArrow} alt='HenryTravel' />  </button>
+                <button className={style.boton}>{number}</button>
                 <button className={style.boton} onClick={() => goToNextPage()}> <img src={rightArrow} alt='HenryTravel' /> </button>
             </ul>
         </nav>
