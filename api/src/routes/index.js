@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const countries = require('./countries.js');
-const { createActivity, getAllActivities, getActivitiesByName, deleteActivity } = require('../controllers/activityControllers.js')
+const { createActivity, getAllActivities, getActivitiesByName } = require('../controllers/activityControllers.js')
 
 const router = Router();
 

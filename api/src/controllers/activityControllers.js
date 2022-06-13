@@ -74,6 +74,5 @@ async function getActivitiesByName(req, res, next) {
 module.exports = {
     createActivity,
     getAllActivities,
-    getActivitiesByName,
-    deleteActivity
+    getActivitiesByName
 }
