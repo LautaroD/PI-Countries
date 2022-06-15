@@ -11,7 +11,6 @@ let ITEMS_PER_PAGE = 10;
 export const Home = ({ getAllCountries }) => {
     const paises = useSelector((state) => state.countries);
     const [currentPage, setCurrentPage] = useState(1);
-    const [isLoading, setIsLoading] = useState(true);
 
     if (currentPage === 1) ITEMS_PER_PAGE = 9;
     else ITEMS_PER_PAGE = 10;
@@ -33,14 +32,12 @@ export const Home = ({ getAllCountries }) => {
 
     useEffect(() => {
         setCurrentPage(1);
-        setIsLoading(false);
     }, [paises]);
 
 
     if (currentPage < 1) setCurrentPage(1);
     if (currentPage > 25) setCurrentPage(25);
-    if (isLoading) return <><h1 className={style.container}>Cargando...</h1></>
-    else if (paises.length <= 0) return <><h1 className={style.container}>No se encontraron paises...</h1></>
+    if (paises.length <= 0) return <><h1 className={style.container}>Cargando...</h1></>
     else return (
         <div className={style.container}>
             <>
