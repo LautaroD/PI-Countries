@@ -37,27 +37,26 @@ export const Home = ({ getAllCountries }) => {
 
     if (currentPage < 1) setCurrentPage(1);
     if (currentPage > 25) setCurrentPage(25);
-    return (
+    if (paises.length <= 0) return <><h1 className={style.container}>Cargando...</h1></>
+    else return (
         <div className={style.container}>
-            {(paises.length <= 0) ? <h1>No se encontraron paises</h1> :
-                <>
-                    <div className={style.filter}>
-                        <Filtrado />
-                    </div>
-                    <div className={style.cards}>
-                        {currentCountries.map(e => <CardPais
-                            key={e.id}
-                            id={e.id}
-                            name={e.name}
-                            imgBandera={e.imgBandera}
-                            capital={e.capital}
-                            poblacion={e.poblacion}
-                            continente={e.continente}
-                        />)}
-                    </div>
-                    <Paginado ITEMS_PER_PAGE={ITEMS_PER_PAGE} paises={paises.length} paginado={paginado} number={currentPage} />
-                </>
-            }
+            <>
+                <div className={style.filter}>
+                    <Filtrado />
+                </div>
+                <div className={style.cards}>
+                    {currentCountries.map(e => <CardPais
+                        key={e.id}
+                        id={e.id}
+                        name={e.name}
+                        imgBandera={e.imgBandera}
+                        capital={e.capital}
+                        poblacion={e.poblacion}
+                        continente={e.continente}
+                    />)}
+                </div>
+                <Paginado ITEMS_PER_PAGE={ITEMS_PER_PAGE} paises={paises.length} paginado={paginado} number={currentPage} />
+            </>
         </div>
     )
 }
